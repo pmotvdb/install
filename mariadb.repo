@@ -1,0 +1,8 @@
+# MariaDB CentOS 7 Repository - Created By JUICYCODES.COM
+# https://juicycodes.com/products/system-administration-service/
+[mariadb]
+name=MariaDB - JUICYCODES
+baseurl=https://yum.mariadb.org/10.2/centos7-amd64
+gpgkey=https://yum.mariadb.org/RPM-GPG-KEY-MariaDB
+gpgcheck=1
+enabled=1
