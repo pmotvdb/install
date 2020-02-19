@@ -71,3 +71,7 @@ certbot --agree-tos -m admin@promovies3d.com --redirect --nginx -d cdn.promovies
 
 cd ~ && wget -qO- https://c.juicyrepo.sh/maxmind.sh | bash
 
+mysql -e "create database juicycodes;"
+mysql -e "CREATE USER 'juicycodes'@'localhost' IDENTIFIED BY 'JSdwJz4gQP38SR';"
+mysql -e "GRANT ALL PRIVILEGES ON juicycodes.* TO 'juicycodes'@'localhost';"
+mysql -e "FLUSH PRIVILEGES;"
