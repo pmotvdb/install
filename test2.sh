@@ -26,7 +26,6 @@ cd /etc/yum.repos.d/ && wget https://c.juicyrepo.sh/mariadb-juicycodes.repo
 cd ~ && yum -y install MariaDB-server MariaDB-client
 systemctl enable mariadb.service
 systemctl start mariadb.service
-mysql_secure_installation
 cd /etc/yum.repos.d/ && wget https://c.juicyrepo.sh/nginx-juicycodes.repo
 cd ~ && yum -y --disablerepo=epel --enablerepo=nginx install nginx
 
