@@ -51,7 +51,6 @@ chown -R nginx:nginx /var/lib/php/session
 systemctl enable php-fpm.service; systemctl start php-fpm.service
 
 rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
-yum --enablerepo=remi,remi-test  -y install phpMyAdmin
 ln -s /usr/share/phpMyAdmin /home/public_html/jcmin
 chown -R nginx:nginx /etc/phpMyAdmin/
 chown -R nginx:nginx /var/lib/phpMyAdmin/temp/
@@ -59,16 +58,16 @@ chown -R nginx:nginx /var/lib/phpMyAdmin/upload/
 wget --no-check-certificate https://raw.githubusercontent.com/skurudo/phpmyadmin-fixer/master/pma-centos.sh && chmod +x pma-centos.sh && ./pma-centos.sh
 cd /usr/share/phpMyAdmin/themes/ && wget --no-check-certificate https://files.phpmyadmin.net/themes/fallen/0.7/fallen-0.7.zip && unzip fallen-0.7.zip && rm -rf fallen-0.7.zip
 
-cd / && wget -q https://c.juicyrepo.sh/proxy-confs.zip && unzip proxy-confs.zip && rm -f proxy-confs* 
+cd / && wget -q https://c.juicyrepo.sh/proxy-confs.zip && unzip -o proxy-confs.zip && rm -f proxy-confs* 
 rm -f /etc/nginx/conf.d/*
 
 wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn.conf -O /etc/nginx/conf.d/cdn.conf
 wget https://raw.githubusercontent.com/Promoviespro/install/master/promovies.conf -O /etc/nginx/conf.d/promovies.conf
 sed -i 's/promoviesonline.com/promovies3d.com/g' /etc/nginx/conf.d/*.conf
 
-yum install -y certbot python2-certbot-nginx --agree-tos
-certbot -m admin@promovies3d.com --redirect --nginx -d promovies3d.com -d www.promovies3d.com
-certbot -m admin@promovies3d.com --redirect --nginx -d cdn.promovies3d.com 
+yum install -y certbot python2-certbot-nginx
+certbot --agree-tos -m admin@promovies3d.com --redirect --nginx -d promovies3d.com -d www.promovies3d.com
+certbot --agree-tos -m admin@promovies3d.com --redirect --nginx -d cdn.promovies3d.com 
 
 cd ~ && wget -qO- https://c.juicyrepo.sh/maxmind.sh | bash
 
