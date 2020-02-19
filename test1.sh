@@ -1,5 +1,7 @@
 mkdir /home/public_html/
-yum -y install epel-release; yum -y update; yum -y install yum-utils wget nano screen net-tools nload zip unzip htop iotop lshw smartmontools hdparm cpuid dsniff nslookup iperf3 sysstat
+yum update -y
+yum -y install epel-release
+yum -y install yum-utils wget nano screen net-tools nload zip unzip htop iotop lshw smartmontools hdparm cpuid dsniff nslookup iperf3 sysstat
 
 yum -y groupinstall 'Development Tools'
 ifconfig
