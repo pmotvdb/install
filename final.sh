@@ -1,5 +1,4 @@
 mkdir /home/public_html/
-
 yum update -y
 yum -y install epel-release
 yum -y update
@@ -36,6 +35,7 @@ systemctl start nginx.service
 yum -y install geoip geoip-devel
 
 yum -y --disablerepo=epel --enablerepo=nginx install nginx-module-geoip nginx-module-geoip-debuginfo
+chown -R nginx:nginx /home
 
 yum erase epel-release -y
 yum install epel-release -y
