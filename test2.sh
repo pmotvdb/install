@@ -24,6 +24,8 @@ firewall-cmd --reload
 
 cd /etc/yum.repos.d/ && wget https://c.juicyrepo.sh/mariadb-juicycodes.repo
 cd ~ && yum -y install MariaDB-server MariaDB-client
+rm -f /etc/my.cnf
+wget https://raw.githubusercontent.com/Promoviespro/install/master/my.cnf -O /etc/my.cnf
 systemctl enable mariadb.service
 systemctl start mariadb.service
 cd /etc/yum.repos.d/ && wget https://c.juicyrepo.sh/nginx-juicycodes.repo
@@ -66,8 +68,6 @@ wget https://raw.githubusercontent.com/Promoviespro/install/master/promovies.con
 sed -i 's/promoviesonline.com/promovies3d.com/g' /etc/nginx/conf.d/*.conf
 
 yum install -y certbot python2-certbot-nginx
-certbot --agree-tos -m admin@promovies3d.com --redirect --nginx -d promovies3d.com -d www.promovies3d.com
-certbot --agree-tos -m admin@promovies3d.com --redirect --nginx -d cdn.promovies3d.com 
 
 cd ~ && wget -qO- https://c.juicyrepo.sh/maxmind.sh | bash
 
@@ -75,3 +75,8 @@ mysql -e "create database juicycodes;"
 mysql -e "CREATE USER 'juicycodes'@'localhost' IDENTIFIED BY 'JSdwJz4gQP38SR';"
 mysql -e "GRANT ALL PRIVILEGES ON juicycodes.* TO 'juicycodes'@'localhost';"
 mysql -e "FLUSH PRIVILEGES;"
+
+
+#### PLEASE RUN THIS COMMANDS ONLY IF DOMAIN POINTED TO SERVER
+#certbot --agree-tos -m admin@promovies3d.com --redirect --nginx -d promovies3d.com -d www.promovies3d.com
+#certbot --agree-tos -m admin@promovies3d.com --redirect --nginx -d cdn.promovies3d.com 
