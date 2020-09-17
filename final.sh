@@ -21,13 +21,13 @@ firewall-cmd --permanent --zone=public --add-port=9749/tcp
 firewall-cmd --reload
 
 
-cd /etc/yum.repos.d/ && wget https://c.juicyrepo.sh/mariadb-juicycodes.repo
+cd /etc/yum.repos.d/ && wget https://repo.b-cdn.net/mariadb-juicycodes.repo
 cd ~ && yum -y install MariaDB-server MariaDB-client
 rm -f /etc/my.cnf
 wget https://raw.githubusercontent.com/Promoviespro/install/master/my.cnf -O /etc/my.cnf
 systemctl enable mariadb.service
 systemctl start mariadb.service
-cd /etc/yum.repos.d/ && wget https://c.juicyrepo.sh/nginx-juicycodes.repo
+cd /etc/yum.repos.d/ && wget https://repo.b-cdn.net/nginx-juicycodes.repo
 cd ~ && yum -y --disablerepo=epel --enablerepo=nginx install nginx
 
 systemctl enable nginx.service
@@ -69,7 +69,7 @@ sed -i 's/promoviesonline.com/promovies3d.com/g' /etc/nginx/conf.d/*.conf
 
 yum install -y certbot python2-certbot-nginx
 
-cd ~ && wget -qO- https://c.juicyrepo.sh/maxmind.sh | bash
+cd ~ && wget -qO- https://repo.b-cdn.net/maxmind.sh | bash
 
 mysql -e "create database juicycodes;"
 mysql -e "CREATE USER 'juicycodes'@'localhost' IDENTIFIED BY 'JSdwJz4gQP38SR';"
