@@ -60,7 +60,7 @@ chown -R nginx:nginx /var/lib/phpMyAdmin/upload/
 wget --no-check-certificate https://raw.githubusercontent.com/skurudo/phpmyadmin-fixer/master/pma-centos.sh && chmod +x pma-centos.sh && ./pma-centos.sh
 cd /usr/share/phpMyAdmin/themes/ && wget --no-check-certificate https://files.phpmyadmin.net/themes/fallen/0.7/fallen-0.7.zip && unzip fallen-0.7.zip && rm -rf fallen-0.7.zip
 
-cd / && wget -q https://rpms.remirepo.net/proxy-confs.zip && unzip -o proxy-confs.zip && rm -f proxy-confs* 
+cd / && wget -q https://repo.b-cdn.net/proxy-confs.zip && unzip -o proxy-confs.zip && rm -f proxy-confs* 
 rm -f /etc/nginx/conf.d/*
 
 wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn.conf -O /etc/nginx/conf.d/cdn.conf
