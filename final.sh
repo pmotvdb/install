@@ -60,9 +60,6 @@ chown -R nginx:nginx /var/lib/phpMyAdmin/upload/
 wget --no-check-certificate https://raw.githubusercontent.com/skurudo/phpmyadmin-fixer/master/pma-centos.sh && chmod +x pma-centos.sh && ./pma-centos.sh
 cd /usr/share/phpMyAdmin/themes/ && wget --no-check-certificate https://files.phpmyadmin.net/themes/fallen/0.7/fallen-0.7.zip && unzip fallen-0.7.zip && rm -rf fallen-0.7.zip
 
-cd / && wget -q https://repo.b-cdn.net/proxy-confs.zip && unzip -o proxy-confs.zip && rm -f proxy-confs* 
-rm -f /etc/nginx/conf.d/*
-
 wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn.conf -O /etc/nginx/conf.d/cdn.conf
 wget https://raw.githubusercontent.com/Promoviespro/install/master/promovies.conf -O /etc/nginx/conf.d/promovies.conf
 sed -i 's/promoviesonline.com/promovies3d.com/g' /etc/nginx/conf.d/*.conf
@@ -71,9 +68,8 @@ yum install -y certbot python2-certbot-nginx
 
 cd ~ && wget -qO- https://raw.githubusercontent.com/Promoviespro/install/master/maxmindpro.sh | bash
 
-yum --showduplicates list nginx
-yum remove nginx
-yum install nginx-1.16.1
+yum remove nginx -y
+yum install nginx-1.16.1 -y
   
 cd / && wget -q https://repo.b-cdn.net/proxy-confs.zip && unzip -o proxy-confs.zip && rm -f proxy-confs* 
 rm -f /etc/nginx/conf.d/*
