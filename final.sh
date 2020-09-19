@@ -61,7 +61,7 @@ wget --no-check-certificate https://raw.githubusercontent.com/skurudo/phpmyadmin
 cd /usr/share/phpMyAdmin/themes/ && wget --no-check-certificate https://files.phpmyadmin.net/themes/fallen/0.7/fallen-0.7.zip && unzip fallen-0.7.zip && rm -rf fallen-0.7.zip
 
 wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn.conf -O /etc/nginx/conf.d/cdn.conf
-wget https://raw.githubusercontent.com/Promoviespro/install/master/promovies.conf -O /etc/nginx/conf.d/promovies.conf
+wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn-ssl.conf -O /etc/nginx/conf.d/cdn-ssl.conf
 sed -i 's/promoviesonline.com/promovies3d.com/g' /etc/nginx/conf.d/*.conf
 
 yum install -y certbot python2-certbot-nginx
