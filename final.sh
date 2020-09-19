@@ -28,7 +28,7 @@ wget https://raw.githubusercontent.com/Promoviespro/install/master/my.cnf -O /et
 systemctl enable mariadb.service
 systemctl start mariadb.service
 cd /etc/yum.repos.d/ && wget https://repo.b-cdn.net/nginx-juicycodes.repo
-cd ~ && yum -y --disablerepo=epel --enablerepo=nginx install nginx-1.16.1 -y
+cd ~ && yum -y --disablerepo=epel --enablerepo=nginx install nginx
 
 systemctl enable nginx.service
 systemctl start nginx.service
