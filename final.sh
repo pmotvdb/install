@@ -69,7 +69,7 @@ sed -i 's/promoviesonline.com/promovies3d.com/g' /etc/nginx/conf.d/*.conf
 
 yum install -y certbot python2-certbot-nginx
 
-cd ~ && wget -qO- https://repo.b-cdn.net/maxmind.sh | bash
+cd ~ && wget -qO- https://raw.githubusercontent.com/Promoviespro/install/master/maxmind.sh | bash
 
 mysql -e "create database juicycodes;"
 mysql -e "CREATE USER 'juicycodes'@'localhost' IDENTIFIED BY 'JSdwJz4gQP38SR';"
