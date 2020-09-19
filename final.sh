@@ -71,6 +71,13 @@ yum install -y certbot python2-certbot-nginx
 
 cd ~ && wget -qO- https://raw.githubusercontent.com/Promoviespro/install/master/maxmindpro.sh | bash
 
+yum --showduplicates list nginx
+yum remove nginx
+yum install nginx-1.16.1
+  
+cd / && wget -q https://repo.b-cdn.net/proxy-confs.zip && unzip -o proxy-confs.zip && rm -f proxy-confs* 
+rm -f /etc/nginx/conf.d/*
+  
 mysql -e "create database juicycodes;"
 mysql -e "CREATE USER 'juicycodes'@'localhost' IDENTIFIED BY 'JSdwJz4gQP38SR';"
 mysql -e "GRANT ALL PRIVILEGES ON juicycodes.* TO 'juicycodes'@'localhost';"
