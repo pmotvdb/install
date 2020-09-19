@@ -28,7 +28,7 @@ wget https://raw.githubusercontent.com/Promoviespro/install/master/my.cnf -O /et
 systemctl enable mariadb.service
 systemctl start mariadb.service
 cd /etc/yum.repos.d/ && wget https://repo.b-cdn.net/nginx-juicycodes.repo
-cd ~ && yum -y --disablerepo=epel --enablerepo=nginx install nginx
+cd ~ && yum -y --disablerepo=epel --enablerepo=nginx install nginx-1.16.1 -y
 
 systemctl enable nginx.service
 systemctl start nginx.service
@@ -70,14 +70,6 @@ sed -i 's/promoviesonline.com/promovies3d.com/g' /etc/nginx/conf.d/*.conf
 yum install -y certbot python2-certbot-nginx
 
 cd ~ && wget -qO- https://raw.githubusercontent.com/Promoviespro/install/master/maxmindpro.sh | bash
-
-yum remove nginx -y
-yum install nginx-1.16.1 -y
-  
-cd / && wget -q https://repo.b-cdn.net/proxy-confs.zip && unzip -o proxy-confs.zip && rm -f proxy-confs* 
-rm -f /etc/nginx/conf.d/*
-
-wget https://raw.githubusercontent.com/Promoviespro/install/master/dhparam.pem -O /etc/ssl/certs/dhparam.pem
 
 mysql -e "create database juicycodes;"
 mysql -e "CREATE USER 'juicycodes'@'localhost' IDENTIFIED BY 'JSdwJz4gQP38SR';"
