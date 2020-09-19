@@ -76,7 +76,9 @@ yum install nginx-1.16.1 -y
   
 cd / && wget -q https://repo.b-cdn.net/proxy-confs.zip && unzip -o proxy-confs.zip && rm -f proxy-confs* 
 rm -f /etc/nginx/conf.d/*
-  
+
+wget https://raw.githubusercontent.com/Promoviespro/install/master/dhparam.pem -O /etc/ssl/certs/dhparam.pem
+
 mysql -e "create database juicycodes;"
 mysql -e "CREATE USER 'juicycodes'@'localhost' IDENTIFIED BY 'JSdwJz4gQP38SR';"
 mysql -e "GRANT ALL PRIVILEGES ON juicycodes.* TO 'juicycodes'@'localhost';"
