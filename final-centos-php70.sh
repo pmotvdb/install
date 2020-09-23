@@ -44,7 +44,7 @@ yum install php php-pear -y
 
 yum  install -y php-PsrLog php-bcmath php-brotli php-cli php-common php-composer-ca-bundle php-composer-semver php-composer-spdx-licenses php-composer-xdebug-handler php-devel php-enchant php-fedora-autoloader php-fpm php-gd php-gmp php-google-recaptcha php-imap php-intl php-ioncube-loader php-json php-jsonlint php-justinrainbow-json-schema5 php-mbstring php-mcrypt php-mysqlnd php-paragonie-random-compat php-password-compat php-pdo php-pear php-pecl-zip php-phpmyadmin-motranslator php-phpmyadmin-shapefile php-phpmyadmin-sql-parser php-phpseclib php-process php-psr-container php-recode php-seld-phar-utils php-soap php-symfony-browser-kit php-symfony-class-loader php-symfony-common php-symfony-config php-symfony-console php-symfony-css-selector php-symfony-debug php-symfony-dependency-injection php-symfony-dom-crawler php-symfony-event-dispatcher php-symfony-expression-language php-symfony-filesystem php-symfony-finder php-symfony-http-foundation php-symfony-http-kernel php-symfony-polyfill php-symfony-process php-symfony-var-dumper php-symfony-yaml php-symfony3-common php-symfony3-translation php-tidy php-xml php-xmlrpc phpMyAdmin
 
-chown -R nginx:nginx /var/lib/php/session
+chown -R nginx:nginx /var/lib/php/*
 systemctl enable php-fpm.service; systemctl start php-fpm.service
 
 rpm -Uvh http://rpms.remirepo.net/enterprise/remi-release-7.rpm
