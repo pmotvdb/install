@@ -11,13 +11,11 @@ yum -y install firewalld
 systemctl enable firewalld.service
 systemctl start firewalld.service
 firewall-cmd --permanent --zone=public --add-service=http
-
 firewall-cmd --permanent --zone=public --add-service=https
 firewall-cmd --permanent --zone=public --add-service=mysql
 firewall-cmd --permanent --add-service=ntp
 firewall-cmd --permanent --zone=public --add-port=9749/tcp
 firewall-cmd --reload
-
 
 cd /etc/yum.repos.d/ && wget https://repo.b-cdn.net/mariadb-juicycodes.repo
 cd ~ && yum -y install MariaDB-server MariaDB-client
@@ -61,8 +59,8 @@ cd /usr/share/phpMyAdmin/themes/ && wget --no-check-certificate https://files.ph
 cd / && wget -q https://repo.b-cdn.net/proxy-confs.zip && unzip -o proxy-confs.zip && rm -f proxy-confs* 
 rm -f /etc/nginx/conf.d/*
 
-wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn.conf -O /etc/nginx/conf.d/cdn.conf
-wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn-ssl.conf -O /etc/nginx/conf.d/cdn-ssl.conf
+wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn.conf -O /etc/nginx/conf.d/promovies3d.conf
+wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn-ssl.conf -O /etc/nginx/conf.d/cdn.promovies3d.com.conf
 sed -i 's/promoviesonline.com/promovies3d.com/g' /etc/nginx/conf.d/*.conf
 
 yum install -y certbot python2-certbot-nginx
@@ -74,12 +72,19 @@ mysql -e "CREATE USER 'juicycodes'@'localhost' IDENTIFIED BY 'JSdwJz4gQP38SR';"
 mysql -e "GRANT ALL PRIVILEGES ON juicycodes.* TO 'juicycodes'@'localhost';"
 mysql -e "FLUSH PRIVILEGES;"
 
-wget https://raw.githubusercontent.com/Promoviespro/install/master/dhparam.pem -O /etc/ssl/certs/dhparam.pem
 mkdir /opt/tmp && cd /opt/tmp/ && wget -q https://repo.b-cdn.net/debian-buster/proxy-confs-7-4.zip && unzip proxy-confs-7-4.zip && rsync -av /opt/tmp/usr/lib/nginx/modules/ /usr/lib64/nginx/modules/
+sed -i 's/promoviesonline.com/promovies3d.com/g' /etc/nginx/conf.d/*.conf
+wget https://raw.githubusercontent.com/Promoviespro/install/master/options-ssl-nginx.conf -O /etc/letsencrypt/options-ssl-nginx.conf
+chattr +i /etc/letsencrypt/options-ssl-nginx.conf
 service nginx restart
 mkdir /opt/pma ; cd /opt/pma && wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.zip && unzip -o *.zip && rm -fr /usr/share/phpMyAdmin/* && rsync -av /opt/pma/phpMyAdmin-5.0.2-all-languages/ /usr/share/phpMyAdmin/ && chown -R nginx:nginx /usr/share/phpMyAdmin/
 reboot
-#### PLEASE RUN THIS COMMANDS ONLY IF DOMAIN POINTED TO SERVER
-#certbot --agree-tos -m admin@promovies3d.com --redirect --nginx -d promovies3d.com -d www.promovies3d.com
-#certbot --agree-tos -m admin@promovies3d.com --redirect --nginx -d cdn.promovies3d.com 
 
+
+#### PLEASE RUN THIS COMMANDS ONLY IF DOMAIN POINTED TO SERVER
+#certbot --agree-tos -m admin@promovies3d.com --non-interactive --redirect --nginx -d promovies3d.com -d www.promovies3d.com
+#certbot --agree-tos -m admin@promovies3d.com --non-interactive --redirect --nginx -d cdn.promovies3d.com 
+#certbot --agree-tos -m admin@promovies3d.com --non-interactive --redirect --nginx -d juicy.133300.ru
+#sed -i 's/443/443\ http2/g' /etc/nginx/conf.d/*
+#service nginx restart 
+###########
