@@ -76,9 +76,6 @@ mysql -e "FLUSH PRIVILEGES;"
 
 wget https://raw.githubusercontent.com/Promoviespro/install/master/dhparam.pem -O /etc/ssl/certs/dhparam.pem
 mkdir /opt/tmp && cd /opt/tmp/ && wget -q https://repo.b-cdn.net/debian-buster/proxy-confs-7-4.zip && unzip proxy-confs-7-4.zip && rsync -av /opt/tmp/usr/lib/nginx/modules/ /usr/lib64/nginx/modules/
-rm -fr /etc/nginx/conf.d/*
-wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn.conf -O /etc/nginx/conf.d/cdn.conf
-sed -i 's/do.fruity.pw/juicy.133300.ru/g' /etc/nginx/conf.d/*.conf
 service nginx restart
 mkdir /opt/pma ; cd /opt/pma && wget https://files.phpmyadmin.net/phpMyAdmin/5.0.2/phpMyAdmin-5.0.2-all-languages.zip && unzip -o *.zip && rm -fr /usr/share/phpMyAdmin/* && rsync -av /opt/pma/phpMyAdmin-5.0.2-all-languages/ /usr/share/phpMyAdmin/ && chown -R nginx:nginx /usr/share/phpMyAdmin/
 reboot
