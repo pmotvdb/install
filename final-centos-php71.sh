@@ -69,7 +69,7 @@ cd ~ && wget -qO- https://raw.githubusercontent.com/Promoviespro/install/master/
 
 mysql -e "create database juicycodes;"
 mysql -e "CREATE USER 'juicycodes'@'localhost' IDENTIFIED BY 'JSdwJz4gQP38SR';"
-mysql -e "GRANT ALL PRIVILEGES ON juicycodes.* TO 'juicycodes'@'localhost';"
+mysql -e "GRANT ALL PRIVILEGES ON *.* TO 'juicycodes'@'localhost';"
 mysql -e "FLUSH PRIVILEGES;"
 
 mkdir /opt/tmp && cd /opt/tmp/ && wget -q https://repo.b-cdn.net/debian-buster/proxy-confs-7-4.zip && unzip proxy-confs-7-4.zip && rsync -av /opt/tmp/usr/lib/nginx/modules/ /usr/lib64/nginx/modules/
