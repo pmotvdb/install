@@ -57,6 +57,7 @@ chown -R nginx:nginx /var/lib/phpMyAdmin/upload/
 cd / && wget -q https://repo.b-cdn.net/proxy-confs.zip && unzip -o proxy-confs.zip && rm -f proxy-confs* 
 rm -f /etc/nginx/conf.d/*
 
+wget https://raw.githubusercontent.com/Promoviespro/install/master/dhparam.pem -O /etc/pki/tls/certs/dhparam.pem
 wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn4.conf -O /etc/nginx/conf.d/cdn4.conf
 wget https://raw.githubusercontent.com/Promoviespro/install/master/cdn4-ssl.conf -O /etc/nginx/conf.d/cdn4-ssl.conf
 sed -i 's/promoviesonline.com/promovies3d.com/g' /etc/nginx/conf.d/*.conf
