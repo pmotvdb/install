@@ -76,7 +76,7 @@ sed -i 's/promoviesonline.com/promovies3d.com/g' /etc/nginx/conf.d/*.conf
 wget https://raw.githubusercontent.com/Promoviespro/install/master/options-ssl-nginx.conf -O /etc/letsencrypt/options-ssl-nginx.conf
 chattr +i /etc/letsencrypt/options-ssl-nginx.conf
 service nginx restart
-mkdir /opt/pma ; cd /opt/pma && wget https://github.com/Promoviespro/install/blob/master/phpMyAdmin-4.7.4-all-languages.zip?raw=true -O phpMyAdmin-4.7.4-all-languages.zip && unzip -o *.zip && rm -fr /usr/share/phpMyAdmin/* && rsync -av /opt/pma/phpMyAdmin-5.0.2-all-languages/ /usr/share/phpMyAdmin/ && chown -R nginx:nginx /usr/share/phpMyAdmin/
+mkdir /opt/pma ; cd /opt/pma && wget https://github.com/Promoviespro/install/blob/master/phpMyAdmin-4.7.4-all-languages.zip?raw=true -O phpMyAdmin-4.7.4-all-languages.zip && unzip -o *.zip && rm -fr /usr/share/phpMyAdmin/* && rsync -av /opt/pma/phpMyAdmin-4.7.4-all-languages/ /usr/share/phpMyAdmin/ && chown -R nginx:nginx /usr/share/phpMyAdmin/
 reboot
 
 
